@@ -10,7 +10,7 @@ class LoginForm extends Component {
   };
 
   handleLoginRequest = user => {
-    let apiUrl = "http://localhost:3001/api/login";
+    let apiUrl = "http://localhost:4000/api/login";
 
     fetch(apiUrl, {
       method: "POST",
