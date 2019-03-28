@@ -1,24 +1,17 @@
-import jwtDecode from "jwt-decode";
-
-const tokenKey = "authKey";
-
-export function setJwt(token) {
-  localStorage.setItem(tokenKey, token);
+export function setUser(user) {
+  localStorage.setItem("user", JSON.stringify(user));
 }
 
-// export function getJwt() {
-//   return localStorage.getItem(tokenKey);
-// }
+export function setJwtCookie(token) {
+  document.cookie = `jwt=${token}`;
+}
 
 export function getUser() {
-  try {
-    const token = localStorage.getItem(tokenKey);
-    return jwtDecode(token);
-  } catch (ex) {
-    console.log(ex);
-  }
+  const user = localStorage.getItem("user");
+  return user === "undefined" ? null : JSON.parse(user);
 }
 
-export function logout() {
-  localStorage.removeItem(tokenKey);
+export function Signout() {
+  document.cookie = "jwt= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+  localStorage.removeItem("user");
 }

@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
-// popers error something missing
 import "../node_modules/jquery/dist/jquery";
 import "../node_modules/popper.js/dist/popper";
 import "../node_modules/bootstrap/dist/js/bootstrap";

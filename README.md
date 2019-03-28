@@ -8,23 +8,27 @@ A template for starting projects with `react`. Includes authentication.
 
 Install with `npm install`.
 
--   
+-
 
 ## Installation
 
 ### Download Template:
+
 1.  [Download](../../archive/master.zip) this template.
 1.  Unzip and rename the template directory (`unzip ~/Downloads/react-template-master.zip`)
 1.  Move into the new project and `git init`.
 
 ### Customize Template:
+
 1.  Empty [`README.md`](README.md) and fill with your own content.
 
 ### Setup Environment:
+
 1.  Install dependencies with `npm install`.
 1.  `git add` and `git commit` your changes.
 
 ### Run your server!
+
 1. Run the API server with `npm start`.
 
 ## Structure
@@ -35,11 +39,10 @@ User authentication is built-in.
 
 Developers should run these often!
 
--   `npm start`
--   `npm run deploy`
+- `npm start`
+- `npm run deploy`
 
 ### Authentication
-
 
 ## [License](LICENSE)
 
