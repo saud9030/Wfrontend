@@ -8,7 +8,6 @@ class SignupForm extends Component {
       email: null,
       password: null,
       password_confirmation: null,
-      age: null,
       number: null,
       gender: null,
       occupation: null,
@@ -85,12 +84,6 @@ class SignupForm extends Component {
               name="password_confirmation"
               className="form-control"
               type="password"
-              onChange={this.handleChange}
-            />
-            <label>age </label>
-            <input
-              name="age"
-              className="form-control"
               onChange={this.handleChange}
             />
             <label>number </label>
