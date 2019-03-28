@@ -4,9 +4,15 @@ import { setJwtCookie, setUser } from "../../services/AuthService";
 class SignupForm extends Component {
   state = {
     formData: {
+      name: null,
       email: null,
       password: null,
-      password_confirmation: null
+      password_confirmation: null,
+      age: null,
+      number: null,
+      gender: null,
+      occupation: null,
+      bio: null
     },
     err: null
   };
@@ -54,6 +60,12 @@ class SignupForm extends Component {
         )}
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
+            <label>name </label>
+            <input
+              name="name"
+              className="form-control"
+              onChange={this.handleChange}
+            />
             <label>email </label>
             <input
               name="email"
@@ -73,6 +85,40 @@ class SignupForm extends Component {
               name="password_confirmation"
               className="form-control"
               type="password"
+              onChange={this.handleChange}
+            />
+            <label>age </label>
+            <input
+              name="age"
+              className="form-control"
+              onChange={this.handleChange}
+            />
+            <label>number </label>
+            <input
+              name="number"
+              className="form-control"
+              onChange={this.handleChange}
+            />
+
+            <label>gender </label>
+            <select class="custom-select" size="2">
+              <option value="true" onChange={this.handleChange}>
+                Male
+              </option>
+              <option value="false" onChange={this.handleChange}>
+                Female
+              </option>
+            </select>
+            <label>occupation </label>
+            <input
+              name="occupation"
+              className="form-control"
+              onChange={this.handleChange}
+            />
+            <label>bio</label>
+            <input
+              name="bio"
+              className="form-control"
               onChange={this.handleChange}
             />
           </div>
