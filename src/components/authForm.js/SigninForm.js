@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import apiUrl from "../../apiConfig";
-import { setJwtCookie, setUser } from "../../services/AuthService";
+import { setUser } from "../../services/AuthService";
 class SigninForm extends Component {
   state = {
     formData: {
@@ -15,6 +15,8 @@ class SigninForm extends Component {
 
     console.log(url);
     fetch(url, {
+      mode: "cors",
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-type": "application/json"
@@ -26,9 +28,7 @@ class SigninForm extends Component {
         if (data.status > 200) this.setState({ err: data.message });
         else {
           this.setState({ err: null });
-          setJwtCookie(data.token);
-          console.log(data);
-          setUser(data.user);
+          setUser(data);
           this.props.onSignin();
         }
       })
@@ -42,7 +42,6 @@ class SigninForm extends Component {
   handleChange = ({ currentTarget }) => {
     const formData = { ...this.state.formData };
     formData[currentTarget.name] = currentTarget.value;
-    console.log(formData);
     this.setState({ formData });
   };
 
