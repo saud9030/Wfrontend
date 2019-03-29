@@ -44,8 +44,11 @@ class SignupForm extends Component {
 
   handleChange = ({ currentTarget }) => {
     const formData = { ...this.state.formData };
+    console.log(currentTarget.name);
+    console.log(currentTarget.value);
     formData[currentTarget.name] = currentTarget.value;
     this.setState({ formData });
+    console.log(formData);
   };
 
   render() {
@@ -94,13 +97,14 @@ class SignupForm extends Component {
             />
 
             <label>gender </label>
-            <select class="custom-select" size="2">
-              <option value="true" onChange={this.handleChange}>
-                Male
-              </option>
-              <option value="false" onChange={this.handleChange}>
-                Female
-              </option>
+            <select
+              class="custom-select"
+              size="2"
+              name="gender"
+              onClick={this.handleChange}
+            >
+              <option>Male</option>
+              <option>Female</option>
             </select>
             <label>occupation </label>
             <input
@@ -117,7 +121,7 @@ class SignupForm extends Component {
           </div>
 
           <button type="submit" className="btn btn-primary">
-            Login
+            SignUp
           </button>
         </form>
       </div>

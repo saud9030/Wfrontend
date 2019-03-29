@@ -58,7 +58,8 @@ class App extends Component {
           ) : (
             ""
           )}
-          {activePage === "profile" ? <Profile /> : ""}
+          {/* when the user log in , user will go to the home page **home should be changed when there is something to show in profile */}
+          {activePage === "profile" ? <Home /> : ""}
         </div>
       </div>
     );
