@@ -27,6 +27,7 @@ class SigninForm extends Component {
         else {
           this.setState({ err: null });
           setJwtCookie(data.token);
+          console.log(data);
           setUser(data.user);
           this.props.onSignin();
         }
@@ -41,6 +42,7 @@ class SigninForm extends Component {
   handleChange = ({ currentTarget }) => {
     const formData = { ...this.state.formData };
     formData[currentTarget.name] = currentTarget.value;
+    console.log(formData);
     this.setState({ formData });
   };
 

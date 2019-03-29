@@ -6,7 +6,7 @@ import SigninForm from "./components/authForm.js/SigninForm";
 import SignupForm from "./components/authForm.js/SignupForm";
 import ChangePasswordForm from "./components/authForm.js/ChangePasswordForm";
 import Home from "./components/Home";
-import Profile from "./components/Profile";
+// import Profile from "./components/Profile";
 class App extends Component {
   state = {
     user: null,

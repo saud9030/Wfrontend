@@ -44,11 +44,8 @@ class SignupForm extends Component {
 
   handleChange = ({ currentTarget }) => {
     const formData = { ...this.state.formData };
-    console.log(currentTarget.name);
-    console.log(currentTarget.value);
     formData[currentTarget.name] = currentTarget.value;
     this.setState({ formData });
-    console.log(formData);
   };
 
   render() {
