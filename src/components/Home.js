@@ -1,5 +1,4 @@
 import React from "react";
-import CreatGroupForm from "./authForm.js/CreateGroupForm";
 
 // if user logged, then user is able to create new group
 const authenticatedOptions = (changeActivePage, user) => (
@@ -35,9 +34,22 @@ const unauthenticatedOptions = changeActivePage => (
 
 const Home = ({ user, changeActivePage }) => (
   <div>
-    {user
+    <button
+      type="button"
+      class="btn btn-primary btn-lg"
+      onClick={() => {
+        if (user) {
+          changeActivePage("api/group");
+        } else {
+          changeActivePage("sign-up");
+        }
+      }}
+    >
+      create group
+    </button>
+    {/* {user
       ? authenticatedOptions(changeActivePage)
-      : unauthenticatedOptions(changeActivePage)}
+      : unauthenticatedOptions(changeActivePage)} */}
   </div>
 );
 

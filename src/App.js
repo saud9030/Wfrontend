@@ -41,10 +41,14 @@ class App extends Component {
           changeActivePage={this.changeActivePage}
           onSignout={this.onSignout}
         />
-        <Home user={user} changeActivePage={this.changeActivePage} />
+        <Home
+          user={user}
+          changeActivePage={this.changeActivePage}
+          active={this.activePage}
+        />
 
         <div className="container">
-          {activePage === "home" ? <Home /> : ""}
+          {/* {activePage === "home" ? <Home /> : ""} */}
           {activePage === "sign-in" ? (
             <SigninForm onSignin={this.onSignin} />
           ) : (
