@@ -64,7 +64,7 @@ class ChangePasswordForm extends Component {
           </div>
 
           <button type="submit" className="btn btn-primary">
-            Login
+            Change Password
           </button>
         </form>
       </div>
