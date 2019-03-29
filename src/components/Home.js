@@ -1,13 +1,43 @@
 import React from "react";
+import CreatGroupForm from "./authForm.js/CreateGroupForm";
 
-const Home = () => (
-  <div>
-    <button type="button" class="btn btn-primary btn-lg">
+// if user logged, then user is able to create new group
+const authenticatedOptions = (changeActivePage, user) => (
+  <React.Fragment>
+    <button
+      type="button"
+      class="btn btn-primary btn-lg"
+      onClick={
+        () =>
+          // if (user) {
+          changeActivePage("api/group")
+        // } else {
+        //   changeActivePage("sign-up");
+        // }
+      }
+    >
       create new group
     </button>
-    <button type="button" class="btn btn-secondary btn-lg">
-      volunteer
+  </React.Fragment>
+);
+// if there is no user, then it goes to signup page ** later on create signup/signin page
+const unauthenticatedOptions = changeActivePage => (
+  <React.Fragment>
+    <button
+      type="button"
+      class="btn btn-primary btn-lg"
+      onClick={() => changeActivePage("sign-up")}
+    >
+      create new group
     </button>
+  </React.Fragment>
+);
+
+const Home = ({ user, changeActivePage }) => (
+  <div>
+    {user
+      ? authenticatedOptions(changeActivePage)
+      : unauthenticatedOptions(changeActivePage)}
   </div>
 );
 
