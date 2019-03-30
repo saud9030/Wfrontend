@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import apiUrl from "../../apiConfig";
-import { getUser } from "../../services/AuthService";
+import { setJwtCookie, getUser } from "../../services/AuthService";
 class CreateGroup extends Component {
   state = {
     formData: {
@@ -19,19 +19,32 @@ class CreateGroup extends Component {
   handleLoginRequest = group => {
     let url = `${apiUrl}/api/group`;
 
-    console.log({ email: getUser().email, group });
+    console.log(group.name);
     console.log(url);
     fetch(url, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ leader: getUser().name, group })
+      body: JSON.stringify({
+        name: group.name,
+        city: group.name,
+        leader: getUser().email,
+        founded: group.founded,
+        description: group.description,
+        contact_number: group.contact_number,
+        email: group.email,
+        type: group.type
+      })
     })
       .then(res => res.json())
       .then(data => {
         if (data.error) this.setState({ err: data.error });
-        this.props.changeActivePage("home");
+        else {
+          setJwtCookie(data.token);
+          this.props.changeActivePage("home");
+        }
       })
       .catch(e => console.log(e));
   };
@@ -87,8 +100,8 @@ class CreateGroup extends Component {
             />
             <label>Group's email </label>
             <input
-              name="new"
-              type="password"
+              name="email"
+              type="email"
               className="form-control"
               onChange={this.handleChange}
             />
@@ -101,7 +114,7 @@ class CreateGroup extends Component {
           </div>
 
           <button type="submit" className="btn btn-primary">
-            Change Password
+            create group
           </button>
         </form>
       </div>
