@@ -44,7 +44,7 @@ class App extends Component {
         <Home
           user={user}
           changeActivePage={this.changeActivePage}
-          active={this.activePage}
+          active={activePage}
         />
 
         <div className="container">

@@ -1,4 +1,5 @@
 import React from "react";
+import { arch } from "os";
 
 // if user logged, then user is able to create new group
 // const authenticatedOptions = (changeActivePage, user) => (
@@ -32,25 +33,29 @@ import React from "react";
 //   </React.Fragment>
 // );
 
-const Home = ({ user, changeActivePage }) => (
-  <div>
-    <button
-      type="button"
-      class="btn btn-primary btn-lg"
-      onClick={() => {
-        if (user) {
-          changeActivePage("api/group");
-        } else {
-          changeActivePage("sign-up");
-        }
-      }}
-    >
-      create group
-    </button>
-    {/* {user
-      ? authenticatedOptions(changeActivePage)
-      : unauthenticatedOptions(changeActivePage)} */}
-  </div>
-);
+const Home = ({ user, changeActivePage, active }) => {
+  console.log(active);
+  if (active !== "sign-up") {
+    return (
+      <div>
+        <button
+          type="button"
+          class="btn btn-primary btn-lg"
+          onClick={() => {
+            if (user) {
+              changeActivePage("api/group");
+            } else {
+              changeActivePage("sign-up");
+            }
+          }}
+        >
+          create group
+        </button>
+      </div>
+    );
+  } else {
+    return null;
+  }
+};
 
 export default Home;
