@@ -30,12 +30,12 @@ class CreateGroup extends Component {
       body: JSON.stringify({
         name: group.name,
         city: group.name,
-        leader: getUser().email,
         founded: group.founded,
         description: group.description,
         contact_number: group.contact_number,
         email: group.email,
-        type: group.type
+        type: group.type,
+        user_id: getUser().id
       })
     })
       .then(res => res.json())
