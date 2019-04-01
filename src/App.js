@@ -60,7 +60,7 @@ class App extends Component {
           ) : (
             ""
           )}
-          {activePage === "home" ? (
+          {activePage === "/api/groups" ? (
             <ViewGroups changeActivePage={this.changeActivePage} />
           ) : (
             ""

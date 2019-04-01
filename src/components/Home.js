@@ -35,7 +35,7 @@ import { arch } from "os";
 
 const Home = ({ user, changeActivePage, active }) => {
   console.log(active);
-  if (active !== "sign-up") {
+  if (active === "home") {
     return (
       <div>
         <button

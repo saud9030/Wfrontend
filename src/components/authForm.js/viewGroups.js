@@ -33,11 +33,34 @@ class ViewGroups extends Component {
   render() {
     let something = [];
     // if (this.state.groups.length > 0) {
-    something = this.state.groups.map(name => <h1>{name.name}</h1>);
+    something = this.state.groups.map(group => (
+      <tr>
+        {/* <th scope="row">1</th> */}
+        <td>{group.name}</td>
+        <td>{group.city}</td>
+        <td>show</td>
+        <td>join</td>
+      </tr>
+    ));
     //   console.log("this mine", something[0]);
     // } else console.log("dd");
 
-    return <div>{something}</div>;
+    return (
+      <div>
+        <table class="table table-sm table-dark">
+          <thead>
+            <tr>
+              {/* <th scope="col">#</th> */}
+              <th scope="col">Name</th>
+              <th scope="col">City</th>
+              <th scope="col">Show</th>
+              <th scope="col">join</th>
+            </tr>
+          </thead>
+          <tbody>{something}</tbody>
+        </table>
+      </div>
+    );
   }
 }
 
