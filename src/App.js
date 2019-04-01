@@ -7,6 +7,7 @@ import SignupForm from "./components/authForm.js/SignupForm";
 import ChangePasswordForm from "./components/authForm.js/ChangePasswordForm";
 import CreatGroupForm from "./components/authForm.js/CreateGroupForm";
 import Home from "./components/Home";
+import ViewGroups from "./components/authForm.js/viewGroups";
 // import Profile from "./components/Profile";
 class App extends Component {
   state = {
@@ -59,6 +60,11 @@ class App extends Component {
           ) : (
             ""
           )}
+          {activePage === "home" ? (
+            <ViewGroups changeActivePage={this.changeActivePage} />
+          ) : (
+            ""
+          )}
           {activePage === "change-password" ? (
             <ChangePasswordForm changeActivePage={this.changeActivePage} />
           ) : (
@@ -69,6 +75,7 @@ class App extends Component {
           ) : (
             ""
           )}
+
           {/* when the user log in , user will go to the home page **home should be changed when there is something to show in profile */}
           {/* {activePage === "profile" ? <Home /> : ""} */}
         </div>

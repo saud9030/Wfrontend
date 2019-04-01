@@ -31,6 +31,7 @@ class CreateGroup extends Component {
         name: group.name,
         city: group.name,
         founded: group.founded,
+        // leader: group.leader,
         description: group.description,
         contact_number: group.contact_number,
         email: group.email,
