@@ -31,7 +31,19 @@ class ViewGroups extends Component {
     //     this.setState({ groups: groups });
     //   });
   }
-
+  leaveGroup = ({ currentTarget }) => {
+    let groupID = currentTarget.value;
+    let url = `${apiUrl}/user/${getUser()}/group/${groupID}`;
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json"
+      }
+      //   body: JSON.stringify({ user_id: getUser().id, group_id: groupID })
+    });
+    // console.log("done");
+    // console.log(id);
+  };
   joinGroup = ({ currentTarget }) => {
     let groupID = currentTarget.value;
     let url = `${apiUrl}/user/${getUser().id}/groups`;
@@ -42,7 +54,7 @@ class ViewGroups extends Component {
       },
       body: JSON.stringify({ user_id: getUser().id, group_id: groupID })
     });
-    console.log("done");
+    // console.log("done");
     // console.log(id);
   };
   render() {
@@ -62,7 +74,10 @@ class ViewGroups extends Component {
           </td>
           <td>
             {userIsInGroup ? (
-              <button>Delete</button>
+              <button onClick={this.leaveGroup} value={group.id}>
+                Delete
+                {console.log(group.id)}
+              </button>
             ) : (
               <button onClick={this.joinGroup} value={group.id}>
                 Join
