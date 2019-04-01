@@ -4,12 +4,12 @@ import { setJwtCookie, getUser } from "../../services/AuthService";
 
 class ViewGroups extends Component {
   state = {
-    groups: []
+    groups: [],
+    name: ""
   };
 
   componentDidMount() {
     let url = `${apiUrl}/api/groups`;
-    console.log("here");
     fetch(url)
       .then(res => {
         return res.json();
@@ -31,6 +31,7 @@ class ViewGroups extends Component {
     //     this.setState({ groups: groups });
     //   });
   }
+
   joinGroup = ({ currentTarget }) => {
     let groupID = currentTarget.value;
     let url = `${apiUrl}/user/${getUser().id}/groups`;
@@ -47,19 +48,30 @@ class ViewGroups extends Component {
   render() {
     let something = [];
     // if (this.state.groups.length > 0) {
-    something = this.state.groups.map(group => (
-      <tr>
-        {/* <th scope="row">1</th> */}
-        <td>{group.name}</td>
-        <td>{group.city}</td>
-        <td>show</td>
-        <td>
-          <button onClick={this.joinGroup} value={group.id}>
-            Join
-          </button>
-        </td>
-      </tr>
-    ));
+    something = this.state.groups.map(group => {
+      const userIds = group.UserGroups.map(userGroup => userGroup.user_id);
+      // to check if the user is already a member of this group or not
+      const userIsInGroup = userIds.includes(getUser().id);
+      return (
+        <tr>
+          {/* <th scope="row">1</th> */}
+          <td>{group.name}</td>
+          <td>{group.city}</td>
+          <td>
+            <button>show</button>
+          </td>
+          <td>
+            {userIsInGroup ? (
+              <button>Delete</button>
+            ) : (
+              <button onClick={this.joinGroup} value={group.id}>
+                Join
+              </button>
+            )}
+          </td>
+        </tr>
+      );
+    });
     //   console.log("this mine", something[0]);
     // } else console.log("dd");
 
