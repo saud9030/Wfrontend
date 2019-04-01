@@ -33,7 +33,7 @@ class ViewGroups extends Component {
   }
   leaveGroup = ({ currentTarget }) => {
     let groupID = currentTarget.value;
-    let url = `${apiUrl}/user/${getUser()}/group/${groupID}`;
+    let url = `${apiUrl}/user/${getUser().id}/group/${groupID}`;
     fetch(url, {
       method: "DELETE",
       headers: {
@@ -46,6 +46,9 @@ class ViewGroups extends Component {
   };
   joinGroup = ({ currentTarget }) => {
     let groupID = currentTarget.value;
+    let userID = getUser().id;
+    console.log(groupID);
+    console.log(userID);
     let url = `${apiUrl}/user/${getUser().id}/groups`;
     fetch(url, {
       method: "POST",
