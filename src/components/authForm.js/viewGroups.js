@@ -40,6 +40,9 @@ class ViewGroups extends Component {
         "Content-type": "application/json"
       }
     });
+    // this.props.changeActivePage("Home");
+    // window.location.reload();
+    // this.props.changeActivePage("/api/groups");
     // console.log("done");
     // console.log(id);
   };
@@ -56,6 +59,7 @@ class ViewGroups extends Component {
       },
       body: JSON.stringify({ user_id: getUser().id, group_id: groupID })
     });
+
     // console.log("done");
     // console.log(id);
   };
@@ -66,7 +70,6 @@ class ViewGroups extends Component {
       const userIds = group.UserGroups.map(userGroup => userGroup.user_id);
       // to check if the user is already a member of this group or not
       const userIsInGroup = userIds.includes(getUser().id);
-      let pop = "hide";
       return (
         <React.Fragment>
           <tr>

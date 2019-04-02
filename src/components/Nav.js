@@ -2,6 +2,9 @@ import React from "react";
 
 const authenticatedOptions = (changeActivePage, onSignout) => (
   <React.Fragment>
+    <li className="nav-item" onClick={() => changeActivePage("/api/groups")}>
+      <div className="nav-link">Groups</div>
+    </li>
     <li
       className="nav-item"
       onClick={() => changeActivePage("change-password")}
@@ -29,9 +32,6 @@ const alwaysOptions = changeActivePage => (
   <React.Fragment>
     <li className="nav-item" onClick={() => changeActivePage("home")}>
       <div className="nav-link">Home</div>
-    </li>
-    <li className="nav-item" onClick={() => changeActivePage("/api/groups")}>
-      <div className="nav-link">Groups</div>
     </li>
   </React.Fragment>
 );

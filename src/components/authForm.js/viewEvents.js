@@ -71,8 +71,9 @@ class ViewEvent extends Component {
           <tr>
             <td>{event.name}</td>
             <td>{event.location}</td>
+            <td>{event.date}</td>
             <td>
-              <button>show</button>
+              <button>Attend</button>
             </td>
             <td />
           </tr>
@@ -88,7 +89,8 @@ class ViewEvent extends Component {
               {/* <th scope="col">#</th> */}
               <th scope="col">Name</th>
               <th scope="col">location</th>
-              <th scope="col">Show</th>
+              <th scope="col">date</th>
+              <th scope="col">#</th>
             </tr>
           </thead>
           <tbody>{something}</tbody>
