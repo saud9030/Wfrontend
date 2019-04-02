@@ -51,7 +51,11 @@ const Home = ({ user, changeActivePage, active }) => {
         >
           create group
         </button>
-        <button type="button" class="btn btn-primary btn-lg">
+        <button
+          type="button"
+          class="btn btn-primary btn-lg"
+          onClick={() => changeActivePage("api/groups")}
+        >
           see events
         </button>
       </div>
