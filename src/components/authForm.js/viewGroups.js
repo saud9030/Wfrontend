@@ -6,20 +6,16 @@ class ViewGroups extends Component {
   state = {
     groups: [],
     name: "",
-    pop: "hide"
+    activeGroup: null
   };
   // this function to show the detalis of a specific group
-  showGroup = () => {
-    if (this.state.pop === "hide") {
-      this.setState({ pop: "show" });
-    }
+  showGroup = activeGroup => {
+    this.setState({ activeGroup });
   };
 
   //this function to hide the detalis of a group if it's shown
   hideGroup = () => {
-    if (this.state.pop === "show") {
-      this.setState({ pop: "hide" });
-    }
+    this.setState({ activeGroup: null });
   };
 
   componentDidMount() {
@@ -70,19 +66,31 @@ class ViewGroups extends Component {
       const userIds = group.UserGroups.map(userGroup => userGroup.user_id);
       // to check if the user is already a member of this group or not
       const userIsInGroup = userIds.includes(getUser().id);
+      let pop = "hide";
       return (
         <React.Fragment>
           <tr>
             <td>{group.name}</td>
             <td>{group.city}</td>
             <td>
-              <button onClick={this.showGroup}>show</button>
+              <button onClick={() => this.showGroup(group.id)}>show</button>
+              <div
+                className={
+                  group.id === this.state.activeGroup ? "show" : "hide"
+                }
+              >
+                <h1>name </h1>
+                {group.city}
+
+                {group.id}
+                <button onClick={this.hideGroup}> close </button>
+              </div>
             </td>
             <td>
               {userIsInGroup ? (
                 <button onClick={this.leaveGroup} value={group.id}>
                   Delete
-                  {console.log(group.id)}
+                  {console.log(group.city)}
                 </button>
               ) : (
                 <button onClick={this.joinGroup} value={group.id}>
@@ -91,12 +99,6 @@ class ViewGroups extends Component {
               )}
             </td>
           </tr>
-          <div className={this.state.pop}>
-            <h1>name </h1>
-            {group.name}
-
-            <button onClick={this.hideGroup}> close </button>
-          </div>
         </React.Fragment>
       );
     });
@@ -117,6 +119,12 @@ class ViewGroups extends Component {
           </thead>
           <tbody>{something}</tbody>
         </table>
+        {/* <div className={this.state.pop}>
+          <h1>name </h1>
+          {this.state.groups.city}
+
+          <button onClick={this.hideGroup}> close </button>
+        </div> */}
       </div>
     );
   }
