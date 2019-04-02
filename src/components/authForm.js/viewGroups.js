@@ -79,10 +79,21 @@ class ViewGroups extends Component {
                   group.id === this.state.activeGroup ? "show" : "hide"
                 }
               >
-                <h1>name </h1>
-                {group.city}
-
-                {group.id}
+                <h1>{group.name} </h1>
+                <div class="container">
+                  <div class="row">
+                    <div class="col">city: {group.city}</div>
+                    <div class="col">first started: {group.founded}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col">description: {group.description}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col">email: {group.email}</div>
+                    <div class="col">number: {group.contact_number}</div>
+                    <div class="col">type of orgniaztion: {group.type}</div>
+                  </div>
+                </div>
                 <button onClick={this.hideGroup}> close </button>
               </div>
             </td>
