@@ -51,6 +51,9 @@ const Home = ({ user, changeActivePage, active }) => {
         >
           create group
         </button>
+        <button type="button" class="btn btn-primary btn-lg">
+          see events
+        </button>
       </div>
     );
   } else {
