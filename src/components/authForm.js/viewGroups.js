@@ -5,7 +5,21 @@ import { setJwtCookie, getUser } from "../../services/AuthService";
 class ViewGroups extends Component {
   state = {
     groups: [],
-    name: ""
+    name: "",
+    pop: "hide"
+  };
+  // this function to show the detalis of a specific group
+  showGroup = () => {
+    if (this.state.pop === "hide") {
+      this.setState({ pop: "show" });
+    }
+  };
+
+  //this function to hide the detalis of a group if it's shown
+  hideGroup = () => {
+    if (this.state.pop === "show") {
+      this.setState({ pop: "hide" });
+    }
   };
 
   componentDidMount() {
@@ -19,18 +33,8 @@ class ViewGroups extends Component {
         console.log("here is the fetch", res.group);
         console.log(this.state.groups);
       });
-
-    //   .then(data => {
-    //     let groups = data.list.map(group => {
-    //       return (
-    //         <div>
-    //           <h3>{group.name}</h3>
-    //         </div>
-    //       );
-    //     });
-    //     this.setState({ groups: groups });
-    //   });
   }
+  //this function to enable the user to leave the group
   leaveGroup = ({ currentTarget }) => {
     let groupID = currentTarget.value;
     let url = `${apiUrl}/user/${getUser().id}/group/${groupID}`;
@@ -39,7 +43,6 @@ class ViewGroups extends Component {
       headers: {
         "Content-type": "application/json"
       }
-      //   body: JSON.stringify({ user_id: getUser().id, group_id: groupID })
     });
     // console.log("done");
     // console.log(id);
@@ -68,26 +71,33 @@ class ViewGroups extends Component {
       // to check if the user is already a member of this group or not
       const userIsInGroup = userIds.includes(getUser().id);
       return (
-        <tr>
-          {/* <th scope="row">1</th> */}
-          <td>{group.name}</td>
-          <td>{group.city}</td>
-          <td>
-            <button>show</button>
-          </td>
-          <td>
-            {userIsInGroup ? (
-              <button onClick={this.leaveGroup} value={group.id}>
-                Delete
-                {console.log(group.id)}
-              </button>
-            ) : (
-              <button onClick={this.joinGroup} value={group.id}>
-                Join
-              </button>
-            )}
-          </td>
-        </tr>
+        <React.Fragment>
+          <tr>
+            <td>{group.name}</td>
+            <td>{group.city}</td>
+            <td>
+              <button onClick={this.showGroup}>show</button>
+            </td>
+            <td>
+              {userIsInGroup ? (
+                <button onClick={this.leaveGroup} value={group.id}>
+                  Delete
+                  {console.log(group.id)}
+                </button>
+              ) : (
+                <button onClick={this.joinGroup} value={group.id}>
+                  Join
+                </button>
+              )}
+            </td>
+          </tr>
+          <div className={this.state.pop}>
+            <h1>name </h1>
+            {group.name}
+
+            <button onClick={this.hideGroup}> close </button>
+          </div>
+        </React.Fragment>
       );
     });
     //   console.log("this mine", something[0]);

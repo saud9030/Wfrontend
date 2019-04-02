@@ -1,0 +1,14 @@
+.hide {
+  display: none;
+}
+.show {
+  color: black;
+  background: white;
+  border: 1px solid gray;
+  width: 550px;
+  height: 200px;
+  position: absolute;
+  top: 20%;
+  /* right: 500px; */
+  right: 30%;
+}
