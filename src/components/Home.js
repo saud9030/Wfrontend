@@ -50,21 +50,21 @@ const Home = ({ user, changeActivePage, active }) => {
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <img
-                  class="d-block w-100"
+                  class="d-block w-100 "
                   src="https://picsum.photos/1200/760"
                   alt="First slide"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  class="d-block w-100"
+                  class="d-block w-100 "
                   src="https://picsum.photos/1200/760"
                   alt="Second slide"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  class="d-block w-100"
+                  class="d-block w-100 "
                   src="https://picsum.photos/1200/760"
                   alt="Third slide"
                 />
@@ -75,7 +75,7 @@ const Home = ({ user, changeActivePage, active }) => {
             <button
               id="createButton"
               type="button"
-              class="btn btn-primary btn-lg"
+              class="btn btn-outline-light btn-lg"
               onClick={() => {
                 if (user) {
                   changeActivePage("api/group");
@@ -89,8 +89,15 @@ const Home = ({ user, changeActivePage, active }) => {
             <button
               id="showButton"
               type="button"
-              class="btn btn-primary btn-lg"
-              onClick={() => changeActivePage("api/groups")}
+              class="btn btn-outline-light btn-lg"
+              // onClick={() => changeActivePage("api/groups")}
+              onClick={() => {
+                if (user) {
+                  changeActivePage("api/groups/event");
+                } else {
+                  changeActivePage("sign-up");
+                }
+              }}
             >
               see events
             </button>

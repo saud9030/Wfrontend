@@ -112,7 +112,12 @@ class ViewGroups extends Component {
               <td>{group.name}</td>
               <td>{group.city}</td>
               <td>
-                <button onClick={() => this.showGroup(group.id)}>show</button>
+                <button
+                  onClick={() => this.showGroup(group.id)}
+                  class="btn btn-outline-light"
+                >
+                  show
+                </button>
                 <div
                   className={
                     group.id === this.state.activeGroup
@@ -120,8 +125,34 @@ class ViewGroups extends Component {
                       : "hideGroup"
                   }
                 >
-                  <h1>{group.name} </h1>
-                  <div class="container">
+                  <div class="card">
+                    <div class="card-header">{group.name}</div>
+                    <div class="card-body">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col">city: {group.city}</div>
+                          <div class="col">first started: {group.founded}</div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            description: {group.description}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">email: {group.email}</div>
+                          <div class="col">number: {group.contact_number}</div>
+                          <div class="col">
+                            type of orgniaztion: {group.type}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <button onClick={this.hideGroup}> close </button>
+                    </div>
+                  </div>
+                  {/* <h1>{group.name} </h1> */}
+                  {/* <div class="container">
                     <div class="row">
                       <div class="col">city: {group.city}</div>
                       <div class="col">first started: {group.founded}</div>
@@ -134,17 +165,25 @@ class ViewGroups extends Component {
                       <div class="col">number: {group.contact_number}</div>
                       <div class="col">type of orgniaztion: {group.type}</div>
                     </div>
-                  </div>
-                  <button onClick={this.hideGroup}> close </button>
+                  </div> */}
+                  {/* <button onClick={this.hideGroup}> close </button> */}
                 </div>
               </td>
               <td>
                 {userIsInGroup ? (
-                  <button onClick={this.leaveGroup} value={group.id}>
+                  <button
+                    onClick={this.leaveGroup}
+                    value={group.id}
+                    class="btn btn-outline-light"
+                  >
                     Delete
                   </button>
                 ) : (
-                  <button onClick={this.joinGroup} value={group.id}>
+                  <button
+                    onClick={this.joinGroup}
+                    value={group.id}
+                    class="btn btn-outline-light"
+                  >
                     Join
                   </button>
                 )}
@@ -159,7 +198,7 @@ class ViewGroups extends Component {
 
       return (
         <div>
-          <table class="table table-sm table-dark">
+          <table class="table table-sm table-hover">
             <thead>
               <tr>
                 {/* <th scope="col">#</th> */}

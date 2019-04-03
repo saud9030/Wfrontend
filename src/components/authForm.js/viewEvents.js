@@ -96,11 +96,19 @@ class ViewEvent extends Component {
             <td>{event.date}</td>
             <td>
               {userIsInEvent ? (
-                <button onClick={this.unattend} value={event.id}>
+                <button
+                  onClick={this.unattend}
+                  value={event.id}
+                  class="btn btn-outline-light"
+                >
                   unattend
                 </button>
               ) : (
-                <button onClick={this.attend} value={event.id}>
+                <button
+                  onClick={this.attend}
+                  value={event.id}
+                  class="btn btn-outline-light"
+                >
                   attend
                 </button>
               )}
@@ -113,7 +121,7 @@ class ViewEvent extends Component {
 
     return (
       <div>
-        <table class="table table-sm table-dark">
+        <table class="table table-sm table-hover">
           <thead>
             <tr>
               {/* <th scope="col">#</th> */}
