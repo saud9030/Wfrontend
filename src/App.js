@@ -87,15 +87,15 @@ class App extends Component {
           {/* when the user log in , user will go to the home page **home should be changed when there is something to show in profile */}
           {/* {activePage === "profile" ? <Home /> : ""} */}
         </div>
-
-        {/* 
-        <footer class="page-footer font-small cyan darken-3">
-
         {activePage === "home" ? (
           <Footer changeActivePage={this.changeActivePage} />
         ) : (
           ""
         )}
+        {/* 
+        <footer class="page-footer font-small cyan darken-3">
+
+        
         {/* <footer class="page-footer font-small cyan darken-3">
 
           <div class="footer-copyright text-center py-3">

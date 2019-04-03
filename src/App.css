@@ -36,6 +36,10 @@ footer {
   /* height: 20%; */
   background: white;
 }
+#logo {
+  width: 120px;
+  height: 90px;
+}
 table {
   text-align: center;
 }

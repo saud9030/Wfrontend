@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "./logo_transparent.png";
 
 const authenticatedOptions = (changeActivePage, onSignout) => (
   <React.Fragment>
@@ -38,7 +39,9 @@ const alwaysOptions = changeActivePage => (
 
 const Nav = ({ user, changeActivePage, onSignout }) => (
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <div className="navbar-brand">Wasel</div>
+    <div className="navbar-brand">
+      <img id="logo" src={logo} />
+    </div>
     <button
       className="navbar-toggler"
       type="button"
