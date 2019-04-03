@@ -1,3 +1,18 @@
+body {
+  background: #02a9da !important;
+}
+footer {
+  /* margin-top: 15.5%; */
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+.contactMe {
+  width: 45px;
+  height: 45px;
+  padding-top: 5px;
+}
 .hideGroup {
   display: none;
 }
