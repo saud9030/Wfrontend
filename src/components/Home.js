@@ -45,30 +45,56 @@ const Home = ({ user, changeActivePage, active }) => {
             <div class="col align-self-end" />
           </div>
         </div> */}
-
-        <div class="container buttonContainer">
-          <button
-            id="createButton"
-            type="button"
-            class="btn btn-primary btn-lg"
-            onClick={() => {
-              if (user) {
-                changeActivePage("api/group");
-              } else {
-                changeActivePage("sign-up");
-              }
-            }}
-          >
-            create group
-          </button>
-          <button
-            id="showButton"
-            type="button"
-            class="btn btn-primary btn-lg"
-            onClick={() => changeActivePage("api/groups")}
-          >
-            see events
-          </button>
+        <div>
+          <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  class="d-block w-100"
+                  src="https://picsum.photos/1200/760"
+                  alt="First slide"
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  class="d-block w-100"
+                  src="https://picsum.photos/1200/760"
+                  alt="Second slide"
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  class="d-block w-100"
+                  src="https://picsum.photos/1200/760"
+                  alt="Third slide"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="container buttonContainer">
+            <button
+              id="createButton"
+              type="button"
+              class="btn btn-primary btn-lg"
+              onClick={() => {
+                if (user) {
+                  changeActivePage("api/group");
+                } else {
+                  changeActivePage("sign-up");
+                }
+              }}
+            >
+              create group
+            </button>
+            <button
+              id="showButton"
+              type="button"
+              class="btn btn-primary btn-lg"
+              onClick={() => changeActivePage("api/groups")}
+            >
+              see events
+            </button>
+          </div>
         </div>
       </React.Fragment>
     );

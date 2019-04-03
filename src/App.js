@@ -91,11 +91,8 @@ class App extends Component {
 
         <footer class="page-footer font-small cyan darken-3">
           <div class="footer-copyright text-center py-3">
-            © 2018 Copyright:
-            <a href="https://mdbootstrap.com/education/bootstrap/">
-              {" "}
-              MDBootstrap.com
-            </a>
+            © 2019 Copyright:
+            <a href="#">Wasel</a>
           </div>
           <span> created by Saud Almutairi </span>
           <div>

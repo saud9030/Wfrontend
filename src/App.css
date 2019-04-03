@@ -32,6 +32,10 @@ footer {
   display: flex;
   justify-content: center;
   margin-top: 15%;
+  position: absolute;
+  top: 120px;
+  left: 0;
+  right: 0;
   font-size: large;
 }
 
