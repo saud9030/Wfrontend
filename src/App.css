@@ -27,11 +27,27 @@ footer {
   /* right: 500px; */
   right: 30%;
 }
+img {
+  margin: auto;
+  max-height: 625px;
+  opacity: 0.5;
+}
+footer {
+  /* height: 20%; */
+  background: white;
+}
+table {
+  text-align: center;
+}
 
 .buttonContainer {
   display: flex;
   justify-content: center;
   margin-top: 15%;
+  position: absolute;
+  top: 120px;
+  left: 0;
+  right: 0;
   font-size: large;
 }
 

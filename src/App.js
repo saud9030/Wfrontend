@@ -9,9 +9,7 @@ import CreatGroupForm from "./components/authForm.js/CreateGroupForm";
 import Home from "./components/Home";
 import ViewGroups from "./components/authForm.js/viewGroups";
 import ViewEvents from "./components/authForm.js/viewEvents";
-import twitter from "./twitter.svg";
-import linkedin from "./linkedin.svg";
-import github from "./github.svg";
+import Footer from "./components/Footer";
 
 // import Profile from "./components/Profile";
 class App extends Component {
@@ -80,22 +78,29 @@ class App extends Component {
           ) : (
             ""
           )}
-          {activePage === "api/groups" ? (
+          {activePage === "api/groups/event" ? (
             <ViewEvents changeActivePage={this.changeActivePage} />
           ) : (
             ""
           )}
+
           {/* when the user log in , user will go to the home page **home should be changed when there is something to show in profile */}
           {/* {activePage === "profile" ? <Home /> : ""} */}
         </div>
+
         {/* 
         <footer class="page-footer font-small cyan darken-3">
+
+        {activePage === "home" ? (
+          <Footer changeActivePage={this.changeActivePage} />
+        ) : (
+          ""
+        )}
+        {/* <footer class="page-footer font-small cyan darken-3">
+
           <div class="footer-copyright text-center py-3">
-            © 2018 Copyright:
-            <a href="https://mdbootstrap.com/education/bootstrap/">
-              {" "}
-              MDBootstrap.com
-            </a>
+            © 2019 Copyright:
+            <a href="#">Wasel</a>
           </div>
           <span> created by Saud Almutairi </span>
           <div>
