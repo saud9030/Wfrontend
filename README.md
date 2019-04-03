@@ -1,46 +1,33 @@
 [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-# React Template
+# What Wasel is About?
 
-A template for starting projects with `react`. Includes authentication.
+Wasel is a platform in which volunteer orgnizations will be posting about their need or an event for volunteers where individuals who want to volunteer will have easier time to find more volunteer opportunities
 
-## Dependencies
+## built with
 
-Install with `npm install`.
+Wasel was built only with Javascript, React in the frontend, and Node Express in the backend.
 
 -
 
-## Installation
+## Backend - Nodejs,Express
 
-### Download Template:
+### DataBase:
 
-1.  [Download](../../archive/master.zip) this template.
-1.  Unzip and rename the template directory (`unzip ~/Downloads/react-template-master.zip`)
-1.  Move into the new project and `git init`.
+1.  Postgress
+1.  sequlize
+1.  5 tabels
 
-### Customize Template:
+### Tabels:
 
-1.  Empty [`README.md`](README.md) and fill with your own content.
+1.  Two joint tabels
+1.  multiple realtionships (Many to Many, one To Many)
 
-### Setup Environment:
+## Frontend - ReactJS
 
-1.  Install dependencies with `npm install`.
-1.  `git add` and `git commit` your changes.
+### tools
 
-### Run your server!
-
-1. Run the API server with `npm start`.
-
-## Structure
-
-User authentication is built-in.
-
-## Tasks
-
-Developers should run these often!
-
-- `npm start`
-- `npm run deploy`
+Bootstrap
 
 ### Authentication
 
