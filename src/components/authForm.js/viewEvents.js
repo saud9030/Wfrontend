@@ -15,13 +15,13 @@ class ViewEvent extends Component {
         return res.json();
       })
       .then(res => {
-        console.log("hello");
-        console.log(res.events);
-        console.log(this.state.events);
+        // console.log("hello");
+        // console.log(res.events);
+        // console.log(this.state.events);
         this.setState({ events: res.events });
-        console.log(this.state.events);
-        console.log("here is the fetch", res.event);
-        console.log(this.state.events);
+        // console.log(this.state.events);
+        // console.log("here is the fetch", res.event);
+        // console.log(this.state.events);
       });
   };
   componentDidMount() {
@@ -39,21 +39,25 @@ class ViewEvent extends Component {
       }
     })
       .then(d => {
-        console.log("hello");
+        // console.log("hello");
         let events = this.state.events.map(event => {
-          if (eventID === event.id) {
+          console.log("almost");
+          console.log(eventID, "right here", event.id);
+          if (eventID == event.id) {
+            console.log("arrive");
+            console.log(event["attendees"]);
             event["Attendees"] = event.Attendees.filter(
-              event => event.user_id !== getUser().id
+              event => event.user_id != getUser().id
             );
           }
           return event;
         });
-
         this.setState({ events });
       })
       .catch(e => console.log(e));
   };
   attend = ({ currentTarget }) => {
+    // console.log("he");
     let eventID = currentTarget.value;
     let url = `${apiUrl}/user/${getUser().id}/events`;
     fetch(url, {
@@ -65,7 +69,7 @@ class ViewEvent extends Component {
     })
       .then(d => {
         let events = this.state.events.map(event => {
-          if (eventID === event.id) {
+          if (eventID == event.id) {
             event["Attendees"].push({
               vevent_id: eventID,
               user_id: getUser().id
@@ -73,7 +77,7 @@ class ViewEvent extends Component {
           }
           return event;
         });
-
+        console.log("he");
         this.setState({ events });
       })
       .catch(e => console.log(e));
@@ -87,7 +91,9 @@ class ViewEvent extends Component {
     something = this.state.events.map(event => {
       const userIds = event.Attendees.map(attendee => attendee.user_id);
       // to check if the user is already attending this event or not
+      //   console.log(userIds, getUser().id);
       const userIsInEvent = userIds.includes(getUser().id);
+      console.log(userIsInEvent);
       return (
         <React.Fragment>
           <tr>

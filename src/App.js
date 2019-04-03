@@ -88,7 +88,7 @@ class App extends Component {
           {/* when the user log in , user will go to the home page **home should be changed when there is something to show in profile */}
           {/* {activePage === "profile" ? <Home /> : ""} */}
         </div>
-
+        {/* 
         <footer class="page-footer font-small cyan darken-3">
           <div class="footer-copyright text-center py-3">
             © 2018 Copyright:
@@ -109,7 +109,7 @@ class App extends Component {
               <img className="contactMe" src={linkedin} alt="myLinkedinPage" />
             </a>
           </div>
-        </footer>
+        </footer> */}
       </div>
     );
   }
