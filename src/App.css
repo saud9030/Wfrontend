@@ -12,3 +12,22 @@
   /* right: 500px; */
   right: 30%;
 }
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 15%;
+  font-size: large;
+}
+
+button {
+  margin-top: 30%;
+}
+#createButton {
+  margin-right: 2.5px;
+  font-size: 36px;
+}
+#showButton {
+  margin-left: 2.5px;
+  font-size: 36px;
+}

@@ -37,28 +37,40 @@ const Home = ({ user, changeActivePage, active }) => {
   console.log(active);
   if (active === "home") {
     return (
-      <div>
-        <button
-          type="button"
-          class="btn btn-primary btn-lg"
-          onClick={() => {
-            if (user) {
-              changeActivePage("api/group");
-            } else {
-              changeActivePage("sign-up");
-            }
-          }}
-        >
-          create group
-        </button>
-        <button
-          type="button"
-          class="btn btn-primary btn-lg"
-          onClick={() => changeActivePage("api/groups")}
-        >
-          see events
-        </button>
-      </div>
+      <React.Fragment>
+        {/* <div class="container">
+          <div class="row">
+            <div class="col align-self-start" />
+            <div class="col align-self-center">here</div>
+            <div class="col align-self-end" />
+          </div>
+        </div> */}
+
+        <div class="container buttonContainer">
+          <button
+            id="createButton"
+            type="button"
+            class="btn btn-primary btn-lg"
+            onClick={() => {
+              if (user) {
+                changeActivePage("api/group");
+              } else {
+                changeActivePage("sign-up");
+              }
+            }}
+          >
+            create group
+          </button>
+          <button
+            id="showButton"
+            type="button"
+            class="btn btn-primary btn-lg"
+            onClick={() => changeActivePage("api/groups")}
+          >
+            see events
+          </button>
+        </div>
+      </React.Fragment>
     );
   } else {
     return null;

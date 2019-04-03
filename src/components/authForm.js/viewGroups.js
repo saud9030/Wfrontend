@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import apiUrl from "../../apiConfig";
 import { setJwtCookie, getUser } from "../../services/AuthService";
+import { fdatasync } from "fs";
 
 class ViewGroups extends Component {
   state = {
@@ -18,8 +19,7 @@ class ViewGroups extends Component {
   hideGroup = () => {
     this.setState({ activeGroup: null });
   };
-
-  componentDidMount() {
+  groupView = () => {
     let url = `${apiUrl}/api/groups`;
     fetch(url)
       .then(res => {
@@ -30,17 +30,37 @@ class ViewGroups extends Component {
         console.log("here is the fetch", res.group);
         console.log(this.state.groups);
       });
+  };
+  componentDidMount() {
+    {
+      this.groupView();
+    }
   }
   //this function to enable the user to leave the group
   leaveGroup = ({ currentTarget }) => {
     let groupID = currentTarget.value;
+    let userID = getUser().id;
+
     let url = `${apiUrl}/user/${getUser().id}/group/${groupID}`;
     fetch(url, {
       method: "DELETE",
       headers: {
         "Content-type": "application/json"
       }
-    });
+    })
+      .then(d => {
+        let groups = this.state.groups.map(group => {
+          if (groupID == group.id) {
+            group["UserGroups"] = group.UserGroups.filter(
+              group => group.user_id != userID
+            );
+          }
+          return group;
+        });
+
+        this.setState({ groups });
+      })
+      .catch(e => console.log(e));
     // this.props.changeActivePage("Home");
     // window.location.reload();
     // this.props.changeActivePage("/api/groups");
@@ -50,6 +70,7 @@ class ViewGroups extends Component {
   joinGroup = ({ currentTarget }) => {
     let groupID = currentTarget.value;
     let userID = getUser().id;
+
     console.log(groupID);
     console.log(userID);
     let url = `${apiUrl}/user/${getUser().id}/groups`;
@@ -59,7 +80,21 @@ class ViewGroups extends Component {
         "Content-type": "application/json"
       },
       body: JSON.stringify({ user_id: getUser().id, group_id: groupID })
-    });
+    })
+      .then(d => {
+        let groups = this.state.groups.map(group => {
+          if (groupID == group.id) {
+            group["UserGroups"].push({
+              group_id: groupID,
+              user_id: userID
+            });
+          }
+          return group;
+        });
+
+        this.setState({ groups });
+      })
+      .catch(e => console.log(e));
 
     // console.log("done");
     // console.log(id);
