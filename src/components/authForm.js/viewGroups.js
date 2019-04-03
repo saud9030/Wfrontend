@@ -104,7 +104,6 @@ class ViewGroups extends Component {
               {userIsInGroup ? (
                 <button onClick={this.leaveGroup} value={group.id}>
                   Delete
-                  {console.log(group.city)}
                 </button>
               ) : (
                 <button onClick={this.joinGroup} value={group.id}>

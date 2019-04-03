@@ -8,15 +8,6 @@ class ViewEvent extends Component {
     name: "",
     activeEvent: null
   };
-  //   // this function to show the detalis of a specific event
-  //   showEvent = activeEvent => {
-  //     this.setState({ activeEvent });
-  //   };
-
-  //   //this function to hide the detalis of a event if it's shown
-  //   hideEvent = () => {
-  //     this.setState({ activeEvent: null });
-  //   };
 
   componentDidMount() {
     let url = `${apiUrl}/api/events`;
@@ -34,38 +25,37 @@ class ViewEvent extends Component {
         console.log(this.state.events);
       });
   }
-  //   //this function to enable the user to leave the group
-  //   leaveGroup = ({ currentTarget }) => {
-  //     let groupID = currentTarget.value;
-  //     let url = `${apiUrl}/user/${getUser().id}/group/${groupID}`;
-  //     fetch(url, {
-  //       method: "DELETE",
-  //       headers: {
-  //         "Content-type": "application/json"
-  //       }
-  //     });
-  //     // console.log("done");
-  //     // console.log(id);
-  //   };
-  //   joinGroup = ({ currentTarget }) => {
-  //     let groupID = currentTarget.value;
-  //     let userID = getUser().id;
-  //     console.log(groupID);
-  //     console.log(userID);
-  //     let url = `${apiUrl}/user/${getUser().id}/groups`;
-  //     fetch(url, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-type": "application/json"
-  //       },
-  //       body: JSON.stringify({ user_id: getUser().id, group_id: groupID })
-  //     });
-  //     // console.log("done");
-  //     // console.log(id);
-  //   };
+  unattend = ({ currentTarget }) => {
+    let eventID = currentTarget.value;
+    let url = `${apiUrl}/user/${getUser().id}/event/${eventID}`;
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json"
+      }
+    });
+  };
+  attend = ({ currentTarget }) => {
+    let eventID = currentTarget.value;
+    let url = `${apiUrl}/user/${getUser().id}/events`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({ user_id: getUser().id, vevent_id: eventID })
+    });
+
+    // console.log("done");
+    // console.log(id);
+  };
+
   render() {
     let something = [];
     something = this.state.events.map(event => {
+      const userIds = event.Attendees.map(attendee => attendee.user_id);
+      // to check if the user is already attending this event or not
+      const userIsInEvent = userIds.includes(getUser().id);
       return (
         <React.Fragment>
           <tr>
@@ -73,7 +63,15 @@ class ViewEvent extends Component {
             <td>{event.location}</td>
             <td>{event.date}</td>
             <td>
-              <button>Attend</button>
+              {userIsInEvent ? (
+                <button onClick={this.unattend} value={event.id}>
+                  unattend
+                </button>
+              ) : (
+                <button onClick={this.attend} value={event.id}>
+                  attend
+                </button>
+              )}
             </td>
             <td />
           </tr>
@@ -95,12 +93,6 @@ class ViewEvent extends Component {
           </thead>
           <tbody>{something}</tbody>
         </table>
-        {/* <div className={this.state.pop}>
-          <h1>name </h1>
-          {this.state.groups.city}
-
-          <button onClick={this.hideGroup}> close </button>
-        </div> */}
       </div>
     );
   }
