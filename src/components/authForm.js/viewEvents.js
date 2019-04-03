@@ -8,8 +8,7 @@ class ViewEvent extends Component {
     name: "",
     activeEvent: null
   };
-
-  componentDidMount() {
+  eventView = () => {
     let url = `${apiUrl}/api/events`;
     fetch(url)
       .then(res => {
@@ -24,6 +23,11 @@ class ViewEvent extends Component {
         console.log("here is the fetch", res.event);
         console.log(this.state.events);
       });
+  };
+  componentDidMount() {
+    {
+      this.eventView();
+    }
   }
   unattend = ({ currentTarget }) => {
     let eventID = currentTarget.value;
@@ -33,7 +37,21 @@ class ViewEvent extends Component {
       headers: {
         "Content-type": "application/json"
       }
-    });
+    })
+      .then(d => {
+        console.log("hello");
+        let events = this.state.events.map(event => {
+          if (eventID == event.id) {
+            event["Attendees"] = event.Attendees.filter(
+              event => event.user_id !== getUser().id
+            );
+          }
+          return event;
+        });
+
+        this.setState({ events });
+      })
+      .catch(e => console.log(e));
   };
   attend = ({ currentTarget }) => {
     let eventID = currentTarget.value;
@@ -44,7 +62,21 @@ class ViewEvent extends Component {
         "Content-type": "application/json"
       },
       body: JSON.stringify({ user_id: getUser().id, vevent_id: eventID })
-    });
+    })
+      .then(d => {
+        let events = this.state.events.map(event => {
+          if (eventID == event.id) {
+            event["Attendees"].push({
+              vevent_id: eventID,
+              user_id: getUser().id
+            });
+          }
+          return event;
+        });
+
+        this.setState({ events });
+      })
+      .catch(e => console.log(e));
 
     // console.log("done");
     // console.log(id);
