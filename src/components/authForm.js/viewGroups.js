@@ -50,9 +50,9 @@ class ViewGroups extends Component {
     })
       .then(d => {
         let groups = this.state.groups.map(group => {
-          if (groupID == group.id) {
+          if (groupID === group.id) {
             group["UserGroups"] = group.UserGroups.filter(
-              group => group.user_id != userID
+              group => group.user_id !== userID
             );
           }
           return group;
@@ -83,7 +83,7 @@ class ViewGroups extends Component {
     })
       .then(d => {
         let groups = this.state.groups.map(group => {
-          if (groupID == group.id) {
+          if (groupID === group.id) {
             group["UserGroups"].push({
               group_id: groupID,
               user_id: userID
@@ -115,7 +115,9 @@ class ViewGroups extends Component {
                 <button onClick={() => this.showGroup(group.id)}>show</button>
                 <div
                   className={
-                    group.id === this.state.activeGroup ? "show" : "hide"
+                    group.id === this.state.activeGroup
+                      ? "showGroup"
+                      : "hideGroup"
                   }
                 >
                   <h1>{group.name} </h1>

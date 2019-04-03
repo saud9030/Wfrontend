@@ -41,7 +41,7 @@ class ViewEvent extends Component {
       .then(d => {
         console.log("hello");
         let events = this.state.events.map(event => {
-          if (eventID == event.id) {
+          if (eventID === event.id) {
             event["Attendees"] = event.Attendees.filter(
               event => event.user_id !== getUser().id
             );
@@ -65,7 +65,7 @@ class ViewEvent extends Component {
     })
       .then(d => {
         let events = this.state.events.map(event => {
-          if (eventID == event.id) {
+          if (eventID === event.id) {
             event["Attendees"].push({
               vevent_id: eventID,
               user_id: getUser().id

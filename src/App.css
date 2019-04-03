@@ -1,7 +1,7 @@
-.hide {
+.hideGroup {
   display: none;
 }
-.show {
+.showGroup {
   color: black;
   background: white;
   border: 1px solid gray;
