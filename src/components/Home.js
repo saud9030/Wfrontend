@@ -1,6 +1,8 @@
 import React from "react";
 import { arch } from "os";
 
+// import pic2 from "./picture2.JPG";
+
 // if user logged, then user is able to create new group
 // const authenticatedOptions = (changeActivePage, user) => (
 //   <React.Fragment>
@@ -51,21 +53,21 @@ const Home = ({ user, changeActivePage, active }) => {
               <div class="carousel-item active">
                 <img
                   class="d-block w-100 "
-                  src="https://picsum.photos/1200/760"
+                  src="https://www.kfshrc.edu.sa/store/headline/5900.png"
                   alt="First slide"
                 />
               </div>
               <div class="carousel-item">
                 <img
                   class="d-block w-100 "
-                  src="https://picsum.photos/1200/760"
+                  src="http://www.alhayat.com/uploads/images/2018/06/10/15633.jpg"
                   alt="Second slide"
                 />
               </div>
               <div class="carousel-item">
                 <img
                   class="d-block w-100 "
-                  src="https://picsum.photos/1200/760"
+                  src="https://www.alyaum.com/uploads/images/2018/08/28/434336.jpg"
                   alt="Third slide"
                 />
               </div>
